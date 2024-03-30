@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đồng Hồ Điện Tử</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #333;
+        }
+        .clock {
+            color: #fff;
+            font-size: 5rem;
+            letter-spacing: 7px;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock" class="clock"></div>
+    <script>
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            var amPm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            document.getElementById('clock').textContent = 
+                (hours < 10 ? '0' : '') + hours + ':' +
+                (minutes < 10 ? '0' : '') + minutes + ':' +
+                (seconds < 10 ? '0' : '') + seconds + ' ' + amPm;
+        }
+        setInterval(updateClock, 1000);
+        updateClock(); // initial call to display the clock immediately
+    </script>
+</body>
+</html>
